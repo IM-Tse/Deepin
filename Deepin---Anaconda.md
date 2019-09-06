@@ -40,5 +40,15 @@
     # <<< conda initialize <<<
     ```
 
+3. jupyter
+
+    ```
+    pip install jupyter_contrib_nbextensions
+    jupyter contrib nbextension install --user --skip-running-check
+    
+" 如果出现No address associated with hostname
+    修改ip为0.0.0.0
+    ```
+    
     
 

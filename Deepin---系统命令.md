@@ -9,6 +9,11 @@
     
     " 禁止开机启动
     systemctl disable 名称
+    
+    
+    systemctl disable vmware-USBArbitrator.service
+    systemctl disable vmware-workstation-server.service
+    systemctl disable vmware.service
     ```
 
 2. 查看系统启动时间
@@ -42,8 +47,6 @@
     " 释放所有缓存,用来清空1和2所有内容的缓存
     echo 3 > /proc/sys/vm/drop_caches
     ```
-
-     
 
 5. 强制清空回收站
 
@@ -103,4 +106,33 @@
     sudo apt install --reinstall deepin-icon-theme
     ```
 
-    
+11. 修复WPS的PDF文件图标
+
+     ```
+     sudo rm /usr/share/mime/packages/wps-office-*.xml
+     sudo update-mime-database /usr/share/mime
+     ```
+
+12. Centos7开放防火墙端口
+
+     ```scss
+     " 开启端口
+     firewall-cmd --zone=public --add-port=80/tcp --permanent
+     
+     " 重启防火墙
+     firewall-cmd --reload
+     
+     " 查询端口是否开启
+     firewall-cmd --query-port=80/tcp
+     
+     " 查询哪些端口是开启的
+     firewall-cmd --list-port
+     ```
+
+13. 查看占用内存前10的进程
+
+     ```
+     ps aux|head -1;ps aux|grep -v PID|sort -rn -k +4|head
+     ```
+
+       
