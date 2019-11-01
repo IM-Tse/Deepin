@@ -18,7 +18,7 @@
 
     ```
     git clone https://github.com/vim/vim.git
-    
+
     cd vim/src
     ```
 
@@ -93,6 +93,8 @@
 
     ```
     Plug 'Valloric/YouCompleteMe'
+    " 如果编译时出现: No CMAKE_CXX_COMPILER could be found. 执行下面命令
+    sudo apt-get install build-essential
     ```
 
     配置信息
@@ -249,8 +251,5 @@
 4. FZF
 
     ```
-    gem install rouge
-    gem install coderay
+    sudo gem install rouge coderay
     ```
-
-    

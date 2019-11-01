@@ -5,6 +5,11 @@ docker stop $(docker ps -aq)
 " 删除所有容器
 docker rm $(docker ps -aq)
 
+" 查看docker的磁盘使用情况
+docker system df
+
+" 清理磁盘, 删除关闭的容器, 无用的数据卷和镜像
+docker system prune
 ```
 
 ## 1. 服务器安装Docker
@@ -69,7 +74,7 @@ docker rm $(docker ps -aq)
     sudo yum install docker-ce
     #由于repo中默认只开启stable仓库，故这里安装的是最新稳定版17.12.0
     
-    或者
+    " 或者
     sudo yum install <FQPN> 
     # 例如：sudo yum install docker-ce-17.12.0.ce
     ```
@@ -214,6 +219,11 @@ AriaNg：http://ip:8000/aria2/
     ```
     cd aria2-ariang-x-docker-compose/filerun
     docker-compose up -d
+    ```
+
+    ```
+    " 下载翻译语言文件
+    git clone https://github.com/filerun/translations.git
     ```
 
     ```

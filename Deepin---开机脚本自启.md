@@ -25,7 +25,7 @@
         # By default this script does nothing.
         # 在此处加入开机后要执行的命令
         # 是以root用户执行的
-        
+
         exit 0
         ```
 
@@ -58,6 +58,3 @@
         ```
         echo "your password" | sudo -S some command
         ```
-        
-        
-

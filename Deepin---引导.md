@@ -5,4 +5,3 @@ sudo mv /etc/grub.d/30_os-prober /etc/grub.d/08_os-prober
 
 sudo update-grub
 ```
-

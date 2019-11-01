@@ -16,10 +16,14 @@
     " 导出环境
     pip freeze > ~/Desktop/1.txt
     conda list -e > requirements.txt
+    conda env export > ai_project.yml
     
     " 安装环境
     pip install -r ~/Desktop/1.txt
     conda install --yes --file requirements.txt
+    
+    " 创建环境
+    conda env create -f requirements.yml
     
     " 加入环境变量
     
@@ -45,10 +49,7 @@
     ```
     pip install jupyter_contrib_nbextensions
     jupyter contrib nbextension install --user --skip-running-check
-    
-" 如果出现No address associated with hostname
+
+    " 如果出现No address associated with hostname
     修改ip为0.0.0.0
     ```
-    
-    
-
