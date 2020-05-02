@@ -24,32 +24,36 @@
     
     " 创建环境
     conda env create -f requirements.yml
+    ```
     
-    " 加入环境变量
-    
+3. 加入环境变量
+
+    ```bash
     # >>> conda initialize >>>
-    # 路径会有所不同
+    # 路径会有所不同, 注意按自己安装目录进行配置
     # !! Contents within this block are managed by 'conda init' !!
-    __conda_setup="$('/home/xyy/anaconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+    __conda_setup="$('~/anaconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
     if [ $? -eq 0 ]; then
         eval "$__conda_setup"
     else
-        if [ -f "/home/xyy/anaconda3/etc/profile.d/conda.sh" ]; then
-            . "/home/xyy/anaconda3/etc/profile.d/conda.sh"
+        if [ -f "~/anaconda3/etc/profile.d/conda.sh" ]; then
+            . "~/anaconda3/etc/profile.d/conda.sh"
         else
-            export PATH="/home/xyy/anaconda3/bin:$PATH"
+            export PATH="~/anaconda3/bin:$PATH"
         fi
     fi
     unset __conda_setup
     # <<< conda initialize <<<
     ```
 
-3. jupyter
+    
+
+4. jupyter
 
     ```
     pip install jupyter_contrib_nbextensions
     jupyter contrib nbextension install --user --skip-running-check
-
+    
     " 如果出现No address associated with hostname
     修改ip为0.0.0.0
     ```

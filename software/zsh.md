@@ -1,3 +1,7 @@
+# Linux系统下 zsh 终端的使用和配置
+
+zsh 是一个比 bash 强大的终端，可以安装多种插件
+
 1. 查看当前默认shell
 
     ```
@@ -30,8 +34,14 @@
     ```
     wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | sh
     ```
+
+6. 复制zsh配置文件
+
+    ```
+    cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc=
+    ```
     
-6. 安装zsh-autosuggestions和zsh-syntax-highlighting
+7. 安装zsh-autosuggestions和zsh-syntax-highlighting
 
     ```
     cd ~/.oh-my-zsh/custom/plugins/
@@ -41,11 +51,7 @@
     git clone https://github.com/zsh-users/zsh-syntax-highlighting.git
     ```
 
-7. 复制zsh配置文件
-
-    ```
-    cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc
-    ```
+    安装完成后记得在 .zshrc 中进行配置Plug
 
 8. 一个终端主题配置文件---jtriley.zsh-theme
 
@@ -60,5 +66,5 @@
     
     ```
 
-9. 重新配置.bashrc中的环境到.zshrc中
+9. 将 .bashrc 中的一些自己环境变量移到.zshrc中
 

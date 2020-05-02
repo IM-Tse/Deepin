@@ -1,8 +1,12 @@
-链接：https://bbs.deepin.org/forum.php?mod=viewthread&tid=169824
+# Linux 开机启动脚本
+
+用来设置需要开机启动的命令
+
+参考链接：https://bbs.deepin.org/forum.php?mod=viewthread&tid=169824
 
 1. #### 修改 ~/.profile 文件(不建议)
 
-2. #### 新建 /etc/rc.local 文件(root用户)
+2. #### 新建 /etc/rc.local 文件(需 root 权限)
 
     1. ```
         vim /etc/rc.local
@@ -49,12 +53,27 @@
 
         ```
         [Desktop Entry]
-        Name=<应用程序名>
+        # 应用程序名
+        Name=
+        # 数值为 Application 或者 Link，Application 表示指向一个应用程序，Link表示指向一个URL
         Type=Application
-        Exec=<应用程序或脚本完整路径>
-        Icon=<应用程序图标的完整路径>
+        # 应用程序或脚本完整路径
+Exec=
+        # 应用程序图标的完整路径
+        Icon=
+        
+        
+        # 以下内容为可选
+        # 指明应用程序是否需要在终端中运行
+        # Terminal=
+        # 应用在启动器中的类别，多个类别用英文分号分隔
+        # Categories=
+        # 对应用程序的简单描述
+        # Comment=
+        # 只有在 Type 为 Link 时才有用
+        # URL=
+        
+        # 参考链接
+        # https://blog.csdn.net/liguangxianbin/article/details/86479653
         ```
-
-        ```
-        echo "your password" | sudo -S some command
-        ```
+        

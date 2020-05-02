@@ -1,12 +1,16 @@
+# aria2c 安装
+
+一个多线程下载工具，可以加快下载速度
+
 1. 系统安装aria2
 
-    ```
+    ```scss
     sudo apt-get install aria2
     ```
 
 2. 创建文件
 
-    ```
+    ```scss
     sudo mkdir /etc/aria2
     sudo touch /etc/aria2/aria2.session
     sudo touch /etc/aria2/aria2.conf
@@ -14,14 +18,14 @@
 
 3. 配置aria2.conf文件
 
-    ```
+    ```properties
     ## '#'开头为注释内容, 选项都有相应的注释说明, 根据需要修改 ##
     ## 被注释的选项填写的是默认值, 建议在需要修改时再取消注释  ##
-
+    
     ## 文件保存相关 ##
-
+    
     # 文件的保存路径(可使用绝对路径或相对路径), 默认: 当前启动位置
-    dir=/home/xyy/Downloads/
+    dir=~/Downloads/
     # 启用磁盘缓存, 0为禁用缓存, 需1.16以上版本, 默认:16M
     #disk-cache=32M
     # 文件预分配方式, 能有效降低磁盘碎片, 默认:prealloc
@@ -31,18 +35,18 @@
     #file-allocation=none
     # 断点续传
     continue=true
-
+    
     ## 下载连接相关 ##
-
+    
     # 最大同时下载任务数, 运行时可修改, 默认:5
     #max-concurrent-downloads=5
     # 同一服务器连接数, 添加时可指定, 默认:1
-    max-connection-per-server=5
+    max-connection-per-server=16
     # 最小文件分片大小, 添加时可指定, 取值范围1M -1024M, 默认:20M
     # 假定size=10M, 文件为20MiB 则使用两个来源下载; 文件为15MiB 则使用一个来源下载
     min-split-size=10M
     # 单个任务最大线程数, 添加时可指定, 默认:5
-    #split=5
+    split=16
     # 整体下载速度限制, 运行时可修改, 默认:0
     #max-overall-download-limit=0
     # 单个任务下载速度限制, 默认:0
@@ -59,18 +63,18 @@
     #max-tries=5
     # 设置重试等待的秒数, 默认:0
     #retry-wait=0
-
+    
     ## 进度保存相关 ##
-
+    
     # 从会话文件中读取下载任务
     input-file=/etc/aria2/aria2.session
     # 在Aria2退出时保存`错误/未完成`的下载任务到会话文件
     save-session=/etc/aria2/aria2.session
     # 定时保存会话, 0为退出时才保存, 需1.16.1以上版本, 默认:0
     #save-session-interval=60
-
+    
     ## RPC相关设置 ##
-
+    
     # 启用RPC, 默认:false
     enable-rpc=true
     # 允许所有来源, 默认:false
@@ -95,9 +99,9 @@
     #rpc-certificate=/path/to/certificate.pem
     # 在 RPC 服务中启用 SSL/TLS 加密时的私钥文件
     #rpc-private-key=/path/to/certificate.key
-
+    
     ## BT/PT下载相关 ##
-
+    
     # 当下载的是一个种子(以.torrent结尾)时, 自动开始BT任务, 默认:true
     #follow-torrent=true
     # BT监听端口, 当端口被屏蔽时使用, 默认:6881-6999
@@ -134,7 +138,7 @@
 
 4. 启动aria2
 
-    ```
+    ```scss
     sudo aria2c --conf-path=/etc/aria2/aria2.conf -D
     ```
 
@@ -150,3 +154,21 @@
         ```
 
     3. 点击Aria2设置 -> 基本设置，设置下载路径
+
+6. 创建 aria2 的桌面启动图标
+
+    先下载 [aria2 图标](https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1588436874269&di=a867d5b71a45b111bb1531f929a80bf5&imgtype=0&src=http%3A%2F%2Fimg3.orsoon.com%2Fico%2F201807%2F26155008_25154d01ea.png)
+
+    ```properties
+    [Desktop Entry]
+    Type=Application
+    Name=aria2
+    GenericName=aria2
+    # 设置启动命令
+    Exec=aria2c --conf-path=/etc/aria2/aria2.conf
+    # 设置为从网上下载的图标
+    Icon=
+    ```
+
+    
+

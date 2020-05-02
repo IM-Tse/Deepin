@@ -1,8 +1,16 @@
+# MySQL数据库安装
+
 1. 下载MySQL
 
     ```
     sudo apt install libmysqlclient-dev mysql-server mysql-client
     ```
+
+    1. 解决安装 mysqlclient 失败
+
+        ```
+        sudo apt-get install libmysqlclient-dev
+        ```
 
 2. 登录MySQL数据库
 
@@ -14,9 +22,9 @@
 
     ```
     grant all on *.* to root@'%' identified by '0919' with grant option;
-
+    
     flush privileges;
-
+    
     退出MySQL后重启
     service mysql restart
     ```
@@ -25,6 +33,6 @@
 
     ```
     sudo vim /etc/mysql/mysql.conf.d/mysqld.cnf
-
+    
     注释掉 bind-address = 127.0.0.1：
     ```

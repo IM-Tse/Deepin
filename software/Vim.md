@@ -1,14 +1,18 @@
-- [ ] ##  1. 安装Vim
+# Vim 安装
+
+安装支持 python 的Vim，因为有些插件需要 vim 支持 Python
+
+##  1. 手动编译安装 Vim
 
 1. 安装依赖包
 
     1. Ubuntu/Deepin
 
     ```
-    sudo apt-get install libncurses5-dev libgnome2-dev libgnomeui-dev libgtk2.0-dev libatk1.0-dev libbonoboui2-dev libcairo2-dev libx11-dev libxpm-dev libxt-dev python-dev ruby-dev liblua5.1 lua5.1-dev libperl-dev git
+    sudo apt-get install libncurses5-dev python-dev python3-dev libcairo2-dev libx11-dev libxpm-dev libxt-dev
     ```
 
-2. 创建文件夹
+2. 创建安装文件夹
 
     ```
     sudo mkdir /usr/local/vim8
@@ -19,7 +23,7 @@
     ```
     git clone https://github.com/vim/vim.git
 
-    cd vim/src
+    cd vim
     ```
 
 4. 配置
@@ -29,25 +33,25 @@
         --enable-multibyte \
         --enable-rubyinterp=yes \
         --enable-python3interp=yes \
-        --with-python3-config-dir=/usr/lib/python3.5/config-3.5m-x86_64-linux-gnu/ \
         --enable-perlinterp=yes \
         --enable-luainterp=yes \
         --enable-gui=gtk2 \
         --enable-cscope \
         --prefix=/usr/local/vim8/
     ```
+    
 
-    开启支持python3路径，有些系统可不需要填写，会自动搜索
+开启支持python3路径，有些系统可不需要填写，会自动搜索
+    
+```
+    --with-python3-config-dir=
+```
 
-    ```
-    --with-python3-config-dir=/usr/lib/python3.5/config-3.5m-x86_64-linux-gnu/ 
-    ```
-
-    安装路径
-
-    ```
+安装路径
+    
+```
     --prefix=/usr/local/vim8/
-    ```
+```
 
 5. 编译安装
 
@@ -60,19 +64,22 @@
     ```
     sudo ln -s /usr/local/vim8/bin/vim /usr/bin/
     ```
+    
+7. 验证是否开启 Python 支持
 
-- [ ] ## 2. 配置Vim
+    ```
+    vim --version
+    ```
+
+## 2. 配置Vim
 
 1. 创建文件夹
 
     ```
     mkdir ~/.vim
-    mkdir ~/.vim/autoload
-    mkdir ~/.vim/plugged
-    mkdir ~/.vim/plugin
-    mkdir ~/.vim/colors
+    mkdir ~/.vim/autoload ~/.vim/plugged ~/.vim/plugin ~/.vim/colors
     ```
-
+    
 2. 安装Vim-Plug
 
     ```
@@ -86,13 +93,159 @@
     ```
     vim ~/.vimrc
     ```
+    
+4. 配置文件
 
-- [ ] ## 3. 安装插件
+    ```
+    """""""""""""""""""""""""
+    "    插件管理
+    """""""""""""""""""""""""
+    call plug#begin('~/.vim/plugged')
+    
+    " 在这里设置安装插件
+    
+    call plug#end()
+    
+    
+    
+    """""""""""""""""""""""""
+    "    Vim设置
+    """""""""""""""""""""""""
+    " 显示行号
+    set number
+    " 光标所在行高亮
+    set cursorline
+    " 自动换行
+    set wrap
+    set linebreak
+    " 显示状态栏,0-不显示，1-只在多窗口显示，2-显示
+    set laststatus=2
+    " 设置在状态栏显示的信息
+    set foldcolumn=0
+    set foldmethod=indent 
+    set foldlevel=3 
+    set foldenable
+    " 不要使用vi的键盘模式，而是vim自己的
+    set nocompatible
+    " 自动缩进
+    set autoindent
+    set cindent
+    " Tab键的宽度
+    set tabstop=4
+    " 统一缩进为4
+    set softtabstop=4
+    set shiftwidth=4
+    " 不要用空格代替制表符
+    set noexpandtab
+    " 在行和段开始处使用制表符
+    set smarttab
+    " 语法高亮
+    set syntax=on
+    " 去掉输入错误的提示声音
+    set noeb
+    " 在状态栏显示光标的当前位置
+    set ruler
+    " 支持使用鼠标
+    set mouse=a
+    " 字符编码
+    set encoding=utf-8
+    set fencs=utf-8,ucs-bom,shift-jis,gb18030,gbk,gb2312,cp936
+    " 语言设置
+    set langmenu=zh_CN.UTF-8
+    set helplang=cn
+    " 我的状态行显示的内容（包括文件类型和解码）
+    set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%l,%v][%p%%]\ %{strftime(\"%d/%m/%y\ -\ %H:%M\")}
+    set statusline=[%F]%y%r%m%*%=[Line:%l/%L,Column:%c][%p%%]
+    " 出错发出提示,屏幕闪烁
+    "set visualbell
+    " 记住历史操作数
+    set history=1000
+    " 自动格式化
+    set formatoptions=tcrqn
+    " 禁止生成临时文件
+    set nobackup
+    set noswapfile
+    " 搜索忽略大小写
+    set ignorecase
+    " 搜索字符高亮
+    set hlsearch
+    set incsearch
+    " 行内替换
+    set gdefault
+    " 命令行（在状态行下）的高度，默认为1，这里是2
+    set cmdheight=2
+    " 侦测文件类型
+    filetype on
+    " 不要生成swap文件，当buffer被丢弃的时候隐藏它
+    setlocal noswapfile
+    " 载入文件类型插件
+    filetype plugin on
+    " 为特定文件类型载入相关缩进文件
+    filetype indent on
+    " 保存全局变量
+    set viminfo+=!
+    " 带有如下符号的单词不要被换行分割
+    set iskeyword+=_,$,@,%,#,-
+    " 字符间插入的像素行数目
+    set linespace=0
+    " 增强模式中的命令行自动完成操作
+    set wildmenu
+    " 使回格键（backspace）正常处理indent, eol, start等
+    set backspace=2
+    " 允许backspace和光标键跨越行边界
+    set whichwrap+=<,>,h,l
+    " 可以在buffer的任何地方使用鼠标（类似office中在工作区双击鼠标定位）
+    set mouse=a
+    set selection=exclusive
+    set selectmode=mouse,key
+    " 通过使用: commands命令，告诉我们文件的哪一行被改变过
+    set report=0
+    " 在被分割的窗口间显示空白，便于阅读
+    set fillchars=vert:\ ,stl:\ ,stlnc:\
+    " 高亮显示匹配的括号
+    set showmatch
+    " 匹配括号高亮的时间（单位是十分之一秒）
+    set matchtime=1
+    " 光标移动到buffer的顶部和底部时保持3行距离
+    set scrolloff=3
+    " 为C程序提供自动缩进
+    set smartindent
+    " 高亮显示普通txt文件（需要txt.vim脚本）
+    au BufRead,BufNewFile *  setfiletype txt
+    
+    " 开启文件类型检查
+    filetype plugin indent on 
+    "打开文件类型检测, 加了这句才可以用智能补全
+    set completeopt=longest,menu
+    
+    
+    
+    """""""""""""""""""""""""
+    "    其他设置
+    """""""""""""""""""""""""
+    " 去除乌干达
+    set shortmess=atI
+    
+    
+    " 设置主题，得自己先下载主题
+    "colorscheme molokai
+    "colorscheme flattened_dark
+    "colorscheme flattened_light
+    "colorscheme janah
+    "colorscheme jellybeans
+    "colorscheme railscasts
+    "colorscheme solarized
+    ```
+
+    
+
+## 3. 安装插件
 
 1. YouCompleteMe
 
     ```
     Plug 'Valloric/YouCompleteMe'
+    
     " 如果编译时出现: No CMAKE_CXX_COMPILER could be found. 执行下面命令
     sudo apt-get install build-essential
     ```
@@ -250,6 +403,8 @@
 
 4. FZF
 
+    一个大坑，不要配置了
+    
     ```
     sudo gem install rouge coderay
     ```
