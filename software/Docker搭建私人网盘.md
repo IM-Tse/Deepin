@@ -87,6 +87,38 @@ docker system prune
     ```
     service start docker
     ```
+    
+3. Deepin
+
+    - GPG
+
+    ```
+    curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -
+    ```
+
+    - r
+
+    ```
+    sudo echo "deb [arch=amd64] https://mirrors.aliyun.com/docker-ce/linux/debian buster  stable" >> /etc/apt/sources.list.d/docker-ce.list
+    ```
+
+    - 更新软件源
+
+    ```
+    sudo apt update
+    ```
+
+    - 安装软件
+
+    ```
+    sudo apt-get install docker-ce docker-ce-cli containerd.io
+    ```
+
+    - 将普通用户组加入docker用户组，免ROOT使用
+
+    ```
+    sudo gpasswd -a ${USER} docker
+    ```
 
 ## 2 . Filerun + AriaNg + Aria2
 
