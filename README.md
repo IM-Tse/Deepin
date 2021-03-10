@@ -12,22 +12,18 @@
 ## 2. Linux 部分配置
 
   1. [程序开机自启方法](https://github.com/IM-Tse/Deepin/blob/master/config/开机自启脚本.md)
+    2. [Debain 和 Ubuntu 系统镜像源设置](https://github.com/IM-Tse/Deepin/blob/master/config/系统镜像源.md)
 
-## 3. Linux 部分软件安装
+## 3. Linux 部分软件安装和配置
 
-  1. [Aria2c](https://github.com/IM-Tse/Deepin/blob/master/software/Aria2c.md)
-  
-  2. [Docker,搭建私人网盘](https://github.com/IM-Tse/Deepin/blob/master/software/Docker搭建私人网盘.md)
-  
-  3. [MySQL](https://github.com/IM-Tse/Deepin/blob/master/software/MySQL.md)
-  
-  4. [Shadowsocks](https://github.com/IM-Tse/Deepin/blob/master/software/Shadowsocks.md)
-  
-  5. [Vim](https://github.com/IM-Tse/Deepin/blob/master/software/Vim.md)
-  
-  6. [Visual Studio Code](https://github.com/IM-Tse/Deepin/blob/master/software/VSCode.md)
-  
-  7. [Zsh](https://github.com/IM-Tse/Deepin/blob/master/software/Zsh.md)
+    1. [Aria2c](https://github.com/IM-Tse/Deepin/blob/master/software/Aria2c.md)
+    2. [Docker,搭建私人网盘](https://github.com/IM-Tse/Deepin/blob/master/software/Docker搭建私人网盘.md)
+    3. [Jupyter 配置](https://github.com/IM-Tse/Deepin/blob/master/software/Jupyter配置.md)
+    4. [MySQL](https://github.com/IM-Tse/Deepin/blob/master/software/MySQL.md)
+    5. [Shadowsocks](https://github.com/IM-Tse/Deepin/blob/master/software/Shadowsocks.md)
+    6. [Vim](https://github.com/IM-Tse/Deepin/blob/master/software/Vim.md)
+    7. [Visual Studio Code](https://github.com/IM-Tse/Deepin/blob/master/software/VSCode.md)
+    8. [Zsh](https://github.com/IM-Tse/Deepin/blob/master/software/Zsh.md)
 
 ## 4. Deepin
 
@@ -45,9 +41,11 @@
 │   └── 系统镜像源.md
 ├── Deepin
 │   └── 问题以及解决方法.md
+├── README.md
 └── software
     ├── Aria2c.md
     ├── Docker搭建私人网盘.md
+    ├── Jupyter配置.md
     ├── MySQL.md
     ├── Shadowsocks.md
     ├── Vim.md
